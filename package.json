@@ -1,16 +1,17 @@
 {
-  "name": "cah-online",
+  "name": "websocket-chat",
   "version": "1.0.0",
-  "description": "Cards Against Humanity Online",
+  "description": "Websocket Chat",
   "main": "server/server.js",
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Chiron1991/websocket-chat.git"
+  },
   "author": "Chiron1991",
-  "license": "MIT",
+  "license": "Unlicense",
   "dependencies": {
     "express": "^4.15.2",
+    "morgan": "^1.8.1",
     "socket.io": "^1.7.3"
-  },
-  "devDependencies": {
-    "morgan": "^1.8.1"
   }
 }
