@@ -1,0 +1,16 @@
+{
+  "name": "cah-online",
+  "version": "1.0.0",
+  "description": "Cards Against Humanity Online",
+  "main": "server/server.js",
+  "repository": "",
+  "author": "Chiron1991",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.2",
+    "socket.io": "^1.7.3"
+  },
+  "devDependencies": {
+    "morgan": "^1.8.1"
+  }
+}
