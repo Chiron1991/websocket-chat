@@ -1,9 +1,9 @@
 # websocket-chat
-This repo basically contains the chat from the [Socket.io tutorial](https://socket.io/get-started/chat/).
+This repository basically contains the chat from the [Socket.io tutorial](https://socket.io/get-started/chat/).
 It's my personal playground for getting familiar with Websockets.
 
 ##  Requirements
-- Node.js v4.8.2+
+- Node.js v6.10.2+
 - nodemon v1.11.0+ (optional)
 - yarn 0.23.2+ (optional)
 
