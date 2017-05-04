@@ -15,7 +15,7 @@ http.listen(conf.port);
 app.use(logger(isProduction ? "combined" : "dev"));
 
 // serve static files
-app.use("/", express.static(path.join(__dirname, "../client")));
+app.use("/", express.static(path.join(__dirname, "../client/dist/")));
 
 // socket handling
 io.on("connection", function (socket) {

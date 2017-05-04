@@ -7,11 +7,23 @@
     "type": "git",
     "url": "https://github.com/Chiron1991/websocket-chat.git"
   },
-  "author": "Chiron1991",
+  "author": "Chiron1991 <mail@chiron-online.de>",
   "license": "Unlicense",
   "dependencies": {
+    "clean-webpack-plugin": "^0.1.16",
+    "css-loader": "^0.28.1",
     "express": "^4.15.2",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "file-loader": "^0.11.1",
+    "html-minify-loader": "^1.1.0",
+    "milligram": "^1.3.0",
     "morgan": "^1.8.1",
-    "socket.io": "^1.7.3"
+    "node-sass": "^4.5.2",
+    "raw-loader": "^0.5.1",
+    "roboto-fontface": "^0.7.0",
+    "sass-loader": "^6.0.3",
+    "socket.io": "^1.7.3",
+    "socket.io-client": "^1.7.3",
+    "webpack": "^2.4.1"
   }
 }
