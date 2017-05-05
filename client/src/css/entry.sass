@@ -23,6 +23,8 @@ body
 //
 
 #history-wrapper
+  border: 0.0625rem solid $color-quaternary
+  border-radius: 0.4rem
   flex-grow: 1
   overflow: auto
 
@@ -41,8 +43,12 @@ body
 #history
   list-style-type: none
 
-  > li:nth-child(even)
-    background-color: $color-tertiary
+  > li
+    margin: 0
+    padding-left: 0.7rem
+
+    &:nth-child(even)
+      background-color: $color-tertiary
 
 //
 // message box
