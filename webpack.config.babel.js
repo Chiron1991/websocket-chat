@@ -1,14 +1,11 @@
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
-const path = require("path");
-const webpack = require("webpack");
+import ExtractTextPlugin from "extract-text-webpack-plugin";
+import path from "path";
+import webpack from "webpack";
 
 const dev = process.env.NODE_ENV !== "production";
-const clearDistPlugin = new CleanWebpackPlugin(path.join(__dirname, "client", "dist"));
 const extractCssPlugin = new ExtractTextPlugin("../../client/dist/bundle.css");
 
 module.exports = {
-    watch: dev,
     devtool: dev ? "inline-source-map" : false,
     entry: [
         path.join(__dirname, "client/src/js/entry.js"),
@@ -23,7 +20,21 @@ module.exports = {
         rules: [
             {
                 test: /\.html$/,
-                loader: dev ? "file-loader?name=[name].[ext]" : ["file-loader?name=[name].[ext]", "html-minify-loader"]
+                loader: dev ? [
+                    "file-loader?name=[name].[ext]"
+                ] : [
+                    "file-loader?name=[name].[ext]",
+                    "html-minify-loader"
+                ]
+            },
+            {
+                test: /\.js$/,
+                loader: "babel-loader",
+                options: {
+                    presets: [
+                        "es2015"
+                    ]
+                }
             },
             {
                 test: /\.(sass|scss)$/,
@@ -53,10 +64,8 @@ module.exports = {
         ]
     },
     plugins: dev ? [
-        clearDistPlugin,
         extractCssPlugin
     ] : [
-        clearDistPlugin,
         extractCssPlugin,
         new webpack.optimize.UglifyJsPlugin({mangle: false, sourcemap: false})
     ]
