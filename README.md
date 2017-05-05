@@ -3,13 +3,13 @@ This repository basically contains the chat from the [Socket.io tutorial](https:
 It's my personal playground for getting familiar with websockets and the whole Node transpiling stack.
 
 ## Requirements
-- Node.js v7.10.0+
+- Node.js 7.10.0+
 - yarn 0.23.4+
 
 ## Preparation
 1. Clone the project by running `git clone https://github.com/Chiron1991/websocket-chat.git`.
 2. `cd` into the project.
-3. Install dependencies by running `npm install` or `yarn install` respectively.
+3. Install dependencies by running `yarn install`.
 
 ## Developing
 1. Make sure your `NODE_ENV` is __not__ `production`.
