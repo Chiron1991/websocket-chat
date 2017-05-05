@@ -6,13 +6,13 @@ const history = document.getElementById("history");
 const message = document.getElementById("message");
 
 document.getElementById("message-form").onsubmit = function () {
-    socket.emit("chat message", message.value);
+    socket.emit("newMessage", message.value);
     message.value = "";
     message.focus();
     return false;
 };
 
-socket.on("chat message", function (msg) {
+socket.on("newMessage", function (msg) {
     history.insertAdjacentHTML("beforeend", "<li>" + msg + "</li>");
     historyWrapper.scrollTop = historyWrapper.scrollHeight;
 });

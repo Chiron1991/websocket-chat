@@ -19,7 +19,7 @@ app.use("/", express.static(path.join(__dirname, "../client/dist/")));
 
 // socket handling
 io.on("connection", function (socket) {
-    socket.on("chat message", function (msg) {
-        io.emit("chat message", msg);
+    socket.on("newMessage", function (msg) {
+        io.emit("newMessage", msg);
     });
 });
