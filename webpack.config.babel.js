@@ -9,7 +9,6 @@ module.exports = {
     devtool: dev ? "inline-source-map" : false,
     entry: [
         path.join(__dirname, "client/src/js/entry.js"),
-        path.join(__dirname, "client/src/index.html"),
         path.join(__dirname, "client/src/css/entry.sass")
     ],
     output: {
@@ -18,15 +17,6 @@ module.exports = {
     },
     module: {
         rules: [
-            {
-                test: /\.html$/,
-                loader: dev ? [
-                    "file-loader?name=[name].[ext]"
-                ] : [
-                    "file-loader?name=[name].[ext]",
-                    "html-minify-loader"
-                ]
-            },
             {
                 test: /\.js$/,
                 loader: "babel-loader",
