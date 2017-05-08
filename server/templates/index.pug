@@ -7,7 +7,7 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
 
-        title Websocket Chat
+        title= title
 
         link(rel="stylesheet" href="static/bundle.css")
         script(src="static/bundle.js" defer)
@@ -15,7 +15,7 @@ html(lang="en")
     body.container
 
         header
-            h1 Such chat. Much Websocket. WoW.
+            h1= heading
 
         main#history-wrapper.pretty-scrollbar
             ul#history

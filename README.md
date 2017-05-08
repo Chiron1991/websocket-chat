@@ -11,6 +11,10 @@ It's my personal playground for getting familiar with websockets and the whole N
 2. `cd` into the project.
 3. Install dependencies by running `yarn install`.
 
+## Configuration
+The default configuration resides at `config/default.json`.
+websocket-chat uses [config](https://github.com/lorenwest/node-config) to manage configuration. Read their wiki to know how to hack into the configuration.
+
 ## Developing
 1. Make sure your `NODE_ENV` is __not__ `production`.
 2. Start Webpack to build your frontend assets by running `yarn webpack`.
@@ -21,11 +25,3 @@ It's my personal playground for getting familiar with websockets and the whole N
 1. Make sure your `NODE_ENV` __is__ `production`.
 2. Prepare both server and asset files by running `yarn build`.
 3. Start the server by running `yarn serve`.
-
-## Configuring the server
-The server can be  configured by passing commandline arguments to it. If an argument is not passed, it will automatically default to a predefined value. Both dev and production server support these arguments.
-
-arg | alias | defaults | description
---- | --- | --- | ---
---assetPath | -a | ../../client/dist | Path to frontend assets relative to `server/dist/server.js`.
---port | -p | 3000 | Port the server runs on.

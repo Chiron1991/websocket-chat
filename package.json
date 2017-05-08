@@ -14,6 +14,7 @@
     "babel-loader": "^7.0.0",
     "babel-preset-es2015": "^6.24.1",
     "command-line-args": "^4.0.4",
+    "config": "^1.26.1",
     "css-loader": "^0.28.1",
     "debug": "^2.6.6",
     "express": "^4.15.2",
@@ -33,7 +34,7 @@
     "webpack": "^2.4.1"
   },
   "scripts": {
-    "devserver": "DEBUG=websocket-chat nodemon --exec babel-node --watch server/src/ server/src/server.js",
+    "devserver": "DEBUG=websocket-chat nodemon --exec babel-node server/src/server.js",
     "webpack": "webpack --watch",
     "build": "rm -rf server/dist && rm -rf client/dist && babel server/src -d server/dist && webpack",
     "serve": "node server/dist/server.js"

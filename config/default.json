@@ -1,0 +1,9 @@
+{
+  "client": {
+    "heading": "Such chat. Much Websocket. Wow.",
+    "title": "Websocket Chat"
+  },
+  "server": {
+    "port": 3000
+  }
+}
