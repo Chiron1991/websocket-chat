@@ -3,23 +3,23 @@ import path from "path";
 import webpack from "webpack";
 
 const dev = process.env.NODE_ENV !== "production";
-const extractCssPlugin = new ExtractTextPlugin("../../client/dist/bundle.css");
+const extractCssPlugin = new ExtractTextPlugin(path.join("..", "..", "client", "dist", "bundle.css"));
 
 module.exports = {
     devtool: dev ? "inline-source-map" : false,
     entry: [
-        path.join(__dirname, "client/src/js/entry.js"),
-        path.join(__dirname, "client/src/css/entry.sass"),
-        path.join(__dirname, "client/src/img/fa-comments.ico")
+        path.join(__dirname, "client", "src", "js", "entry.js"),
+        path.join(__dirname, "client", "src", "css", "entry.sass"),
+        path.join(__dirname, "client", "src", "img", "fa-comments.ico")
     ],
     output: {
-        path: path.join(__dirname, "/client/dist/"),
+        path: path.join(__dirname, "client", "dist"),
         filename: "bundle.js"
     },
     resolve: {
         modules: [
-            path.join(__dirname, "client/src/js"),
-            "node_modules"
+            path.join(__dirname, "client", "src", "js"),
+            path.join(__dirname, "node_modules")
         ]
     },
     module: {
