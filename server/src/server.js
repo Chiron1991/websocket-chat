@@ -6,6 +6,7 @@ import path from "path";
 import _debug from "debug";
 import config from "config";
 import pug from "pug";
+import moment from "moment";
 
 const debug = _debug("websocket-chat");
 const isProduction = process.env.NODE_ENV === "production";
@@ -50,7 +51,7 @@ chatSocket.on("connection", function (socket) {
 
     // distribute messages
     socket.on("newMessage", function (msg) {
-        chatSocket.emit("newMessage", pug.render("strong " + nickname + ": ") + msg);
+        chatSocket.emit("newMessage", pug.render("strong [" + moment().format(config.get("server.timestampFormat")) + "] " + nickname + ": ") + msg);
     });
 
 });

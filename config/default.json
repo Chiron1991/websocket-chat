@@ -4,6 +4,7 @@
     "title": "Websocket Chat"
   },
   "server": {
-    "port": 3000
+    "port": 3000,
+    "timestampFormat": "YYYY-MM-DD h:mmA"
   }
 }
