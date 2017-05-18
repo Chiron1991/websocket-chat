@@ -9,7 +9,8 @@ module.exports = {
     devtool: dev ? "inline-source-map" : false,
     entry: [
         path.join(__dirname, "client/src/js/entry.js"),
-        path.join(__dirname, "client/src/css/entry.sass")
+        path.join(__dirname, "client/src/css/entry.sass"),
+        path.join(__dirname, "client/src/img/fa-comments.ico")
     ],
     output: {
         path: path.join(__dirname, "/client/dist/"),
@@ -50,6 +51,10 @@ module.exports = {
             {
                 test: /\.(eot|svg|ttf|woff|woff2)$/,
                 loader: "file-loader?name=font/[name].[ext]"
+            },
+            {
+                test: /\.(ico)$/,
+                loader: "file-loader?name=[name].[ext]"
             }
         ]
     },
