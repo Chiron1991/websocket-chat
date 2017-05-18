@@ -5,6 +5,7 @@ import morgan from "morgan";
 import path from "path";
 import _debug from "debug";
 import config from "config";
+import pug from "pug";
 
 const debug = _debug("websocket-chat");
 const isProduction = process.env.NODE_ENV === "production";
@@ -36,7 +37,18 @@ app.get("/", function (req, res) {
 
 // socket handling
 chatSocket.on("connection", function (socket) {
+
+    // broadcast new user
+    socket.broadcast.emit("newMessage", pug.render("strong #[em " + socket.handshake.query.nickname + "] has joined the chat!"));
+
+    // broadcast user on disconnect
+    socket.on("disconnect", function(){
+        socket.broadcast.emit("newMessage", pug.render("strong #[em " + socket.handshake.query.nickname + "] has left the chat!"));
+    });
+
+    // distribute messages
     socket.on("newMessage", function (msg) {
         chatSocket.emit("newMessage", msg);
     });
+
 });

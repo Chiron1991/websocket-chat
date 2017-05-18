@@ -16,6 +16,12 @@ module.exports = {
         path: path.join(__dirname, "/client/dist/"),
         filename: "bundle.js"
     },
+    resolve: {
+        modules: [
+            path.join(__dirname, "client/src/js"),
+            "node_modules"
+        ]
+    },
     module: {
         rules: [
             {
