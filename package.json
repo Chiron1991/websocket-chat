@@ -5,7 +5,7 @@
   "main": "server/dist/server.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Chiron1991/websocket-chat.git"
+    "url": "https://chiron@home.chiron-online.de/gitlab/chiron/websocket-chat.git"
   },
   "author": "Chiron1991 <mail@chiron-online.de>",
   "license": "Unlicense",

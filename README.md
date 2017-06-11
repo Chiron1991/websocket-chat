@@ -7,7 +7,7 @@ It's my personal playground for getting familiar with websockets and the whole N
 - yarn 0.23.4+
 
 ## Preparation
-1. Clone the project by running `git clone https://github.com/Chiron1991/websocket-chat.git`.
+1. Clone the project by running `git clone https://chiron@home.chiron-online.de/gitlab/chiron/websocket-chat.git`.
 2. `cd` into the project.
 3. Install dependencies by running `yarn install`.
 
