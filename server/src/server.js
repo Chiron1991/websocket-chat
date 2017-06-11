@@ -1,12 +1,12 @@
 import express from "express";
 import http from "http";
-import socketIO from "socket.io";
+import io from "socket.io";
 import morgan from "morgan";
 import path from "path";
 import _debug from "debug";
-import config from "config";
-import pug from "pug";
-import moment from "moment";
+import config from "./configReader";
+import userList from "./userList";
+import {ChatMessageRenderer, SystemMessageRenderer, UserListRenderer} from "./snippetRenderer";
 
 const debug = _debug("websocket-chat");
 const isProduction = process.env.NODE_ENV === "production";
@@ -16,17 +16,17 @@ debug("Configuration is: ", config);
 
 // init and config express app
 const app = express();
-app.set("views", path.join(__dirname, "..", "templates")); // set root dir of template files
+app.set("views", path.resolve(__dirname, "../templates")); // set root dir of template files
 app.set("view engine", "pug"); // set Pug as template engine
 app.use(morgan(isProduction ? "combined" : "dev")); // enable request logging
-app.use("/static", express.static(path.join(__dirname, "..", "..", "client", "dist"))); // serve client files
+app.use("/static", express.static(path.resolve(__dirname, "../../client/dist"))); // serve client files
 
 // init HTTP server
 const httpServer = http.Server(app); // pass express app to bind to server
 httpServer.listen(config.get("server.port"));
 
 // init websocket for chat and bind it to HTTP server
-const chatSocket = socketIO(httpServer);
+const chatSocket = io(httpServer);
 
 // routes
 app.get("/", function (req, res) {
@@ -39,19 +39,30 @@ app.get("/", function (req, res) {
 // socket handling
 chatSocket.on("connection", function (socket) {
 
-    const nickname = socket.handshake.query.nickname;
+    // add new user to user list
+    userList.add(socket.id, socket.handshake.query.nickname);
 
     // broadcast new user
-    socket.broadcast.emit("newMessage", pug.render("strong #[em " + nickname + "] has joined the chat!"));
+    socket.broadcast.emit("newMessage", SystemMessageRenderer.render({
+        message: userList.nicknameForId(socket.id) + " has joined the chat!"
+    }));
+    chatSocket.emit("updateUserList", UserListRenderer.render());
 
-    // broadcast user on disconnect
+    // broadcast left user
     socket.on("disconnect", function () {
-        socket.broadcast.emit("newMessage", pug.render("strong #[em " + nickname + "] has left the chat!"));
+        socket.broadcast.emit("newMessage", SystemMessageRenderer.render({
+            message: userList.nicknameForId(socket.id) + " has left the chat!"
+        }));
+        userList.remove(socket.id);
+        chatSocket.emit("updateUserList", UserListRenderer.render());
     });
 
     // distribute messages
-    socket.on("newMessage", function (msg) {
-        chatSocket.emit("newMessage", pug.render("strong [" + moment().format(config.get("server.timestampFormat")) + "] " + nickname + ": ") + msg);
+    socket.on("newMessage", function (message) {
+        chatSocket.emit("newMessage", ChatMessageRenderer.render({
+            message: message,
+            user: userList.nicknameForId(socket.id)
+        }));
     });
 
 });

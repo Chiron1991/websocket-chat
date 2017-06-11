@@ -24,6 +24,23 @@ header > h1
   margin: $vertical-spacing 0
 
 //
+// user list
+//
+
+#user-list
+  $li-margin-bottom: 1.0rem // hard-coded by Milligram
+
+  list-style: none
+  margin-bottom: $vertical-spacing - $li-margin-bottom
+
+  > li
+    @extend .button
+    margin-right: $content-padding
+
+    > i.fa-user
+      padding-right: 0.5rem
+
+//
 // history box
 //
 

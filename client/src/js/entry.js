@@ -2,6 +2,7 @@ import client from "socket.io-client";
 import {promptNickname} from "promptNickname";
 
 // prepare DOM stuff
+const userList = document.getElementById("user-list");
 const historyWrapper = document.getElementById("history-wrapper");
 const history = document.getElementById("history");
 const message = document.getElementById("message");
@@ -26,4 +27,9 @@ document.getElementById("message-form").onsubmit = function () {
 // append incoming new messages to history
 socket.on("newMessage", function (msg) {
     appendToHistory(msg);
+});
+
+// put updated user list to place
+socket.on("updateUserList", function(newUserList){
+    userList.innerHTML = newUserList;
 });
