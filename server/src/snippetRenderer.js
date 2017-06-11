@@ -1,7 +1,7 @@
 import _ from "lodash";
 import moment from "moment";
 import nunjucks from "nunjucks";
-import config from "./configReader";
+import config from "./configProvider";
 import userList from "./userList";
 
 class SnippetRenderer {

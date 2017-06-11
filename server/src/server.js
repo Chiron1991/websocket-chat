@@ -5,7 +5,7 @@ import morgan from "morgan";
 import path from "path";
 import _debug from "debug";
 import nunjucks from "nunjucks";
-import config from "./configReader";
+import config from "./configProvider";
 import userList from "./userList";
 import {ChatMessageRenderer, SystemMessageRenderer, UserListRenderer} from "./snippetRenderer";
 
