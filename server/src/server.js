@@ -4,6 +4,7 @@ import io from "socket.io";
 import morgan from "morgan";
 import path from "path";
 import _debug from "debug";
+import nunjucks from "nunjucks";
 import config from "./configReader";
 import userList from "./userList";
 import {ChatMessageRenderer, SystemMessageRenderer, UserListRenderer} from "./snippetRenderer";
@@ -16,8 +17,6 @@ debug("Configuration is: ", config);
 
 // init and config express app
 const app = express();
-app.set("views", path.resolve(__dirname, "../templates")); // set root dir of template files
-app.set("view engine", "pug"); // set Pug as template engine
 app.use(morgan(isProduction ? "combined" : "dev")); // enable request logging
 app.use("/static", express.static(path.resolve(__dirname, "../../client/dist"))); // serve client files
 
@@ -28,9 +27,15 @@ httpServer.listen(config.get("server.port"));
 // init websocket for chat and bind it to HTTP server
 const chatSocket = io(httpServer);
 
+// init template engine
+nunjucks.configure(path.resolve(__dirname, "../templates"), {
+    autoescape: true,
+    express: app
+});
+
 // routes
 app.get("/", function (req, res) {
-    res.render("index", {
+    res.render("index.nunjucks", {
         heading: config.get("client.heading"),
         title: config.get("client.title")
     });

@@ -1,0 +1,1 @@
+<strong>[{{ timestamp }}] {{ user }}: </strong>{{ message }}
