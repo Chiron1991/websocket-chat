@@ -32,7 +32,7 @@
                 {% set hint = "Type a new chat message here!" %}
                 <input id="message" placeholder="{{ hint }}" title="{{ hint }}" autocomplete="off" autofocus>
                 <button id="message-send" title="Send message!">
-                    <i class="fa fa-lg fa-paper-plance"></i>
+                    <i class="fa fa-lg fa-paper-plane"></i>
                 </button>
             </form>
         </footer>
