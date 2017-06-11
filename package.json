@@ -36,9 +36,9 @@
     "webpack": "^2.6.1"
   },
   "scripts": {
-    "devserver": "DEBUG=websocket-chat nodemon --exec babel-node server/src/server.js",
-    "webpack": "webpack --watch",
-    "build": "rm -rf server/dist && rm -rf client/dist && babel server/src -d server/dist && webpack",
-    "serve": "node server/dist/server.js"
+    "devserver": "NODE_ENV=development DEBUG=websocket-chat nodemon --exec babel-node server/src/server.js",
+    "webpack": "NODE_ENV=development webpack --watch",
+    "build": "rm -rf server/dist && rm -rf client/dist && NODE_ENV=production babel server/src -d server/dist && NODE_ENV=production webpack",
+    "serve": "NODE_ENV=production node server/dist/server.js"
   }
 }
