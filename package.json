@@ -16,6 +16,8 @@
     "config": "^1.26.1",
     "css-loader": "^0.28.4",
     "debug": "^2.6.8",
+    "emoji-datasource-apple": "^3.0.0",
+    "emoji-js": "^3.2.2",
     "express": "^4.15.3",
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.11.2",

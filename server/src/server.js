@@ -18,6 +18,7 @@ debug("Configuration is: ", config);
 // init and config express app
 const app = express();
 app.use(morgan(isProduction ? "combined" : "dev")); // enable request logging
+app.use("/static/emoji-apple", express.static(path.resolve(__dirname, "../../node_modules/emoji-datasource-apple/img/apple/64")));
 app.use("/static", express.static(path.resolve(__dirname, "../../client/dist"))); // serve client files
 
 // init HTTP server
@@ -48,14 +49,14 @@ chatSocket.on("connection", function (socket) {
     userList.add(socket.id, socket.handshake.query.nickname);
 
     // broadcast new user
-    socket.broadcast.emit("newMessage", SystemMessageRenderer.render({
+    socket.broadcast.emit("newSystemMessage", SystemMessageRenderer.render({
         message: userList.nicknameForId(socket.id) + " has joined the chat!"
     }));
     chatSocket.emit("updateUserList", UserListRenderer.render());
 
     // broadcast left user
     socket.on("disconnect", function () {
-        socket.broadcast.emit("newMessage", SystemMessageRenderer.render({
+        socket.broadcast.emit("newSystemMessage", SystemMessageRenderer.render({
             message: userList.nicknameForId(socket.id) + " has left the chat!"
         }));
         userList.remove(socket.id);
@@ -63,8 +64,8 @@ chatSocket.on("connection", function (socket) {
     });
 
     // distribute messages
-    socket.on("newMessage", function (message) {
-        chatSocket.emit("newMessage", ChatMessageRenderer.render({
+    socket.on("newChatMessage", function (message) {
+        chatSocket.emit("newChatMessage", ChatMessageRenderer.render({
             message: message,
             user: userList.nicknameForId(socket.id)
         }));
