@@ -26,12 +26,10 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
-                loader: "babel-loader",
-                options: {
-                    presets: [
-                        "es2015"
-                    ]
-                }
+                loader: [
+                    "babel-loader",
+                    "eslint-loader"
+                ]
             },
             {
                 test: /\.(sass|scss)$/,

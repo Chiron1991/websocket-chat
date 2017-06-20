@@ -18,6 +18,8 @@
     "debug": "^2.6.8",
     "emoji-datasource-apple": "^3.0.0",
     "emoji-js": "^3.2.2",
+    "eslint": "^4.0.0",
+    "eslint-loader": "^1.8.0",
     "express": "^4.15.3",
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.11.2",
