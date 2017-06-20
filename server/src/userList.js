@@ -2,7 +2,7 @@ import _ from "lodash";
 
 class UserList {
     constructor() {
-        this.presentUsers = {}
+        this.presentUsers = {};
     }
 
     // add a new id-nickname-pair to the list

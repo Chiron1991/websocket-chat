@@ -27,17 +27,17 @@ class SnippetRenderer {
 export const SystemMessageRenderer = new SnippetRenderer("snippets/systemMessage.nunjucks", function () {
     return {
         timestamp: moment().format(config.get("server.timestampFormat"))
-    }
+    };
 });
 
 export const UserListRenderer = new SnippetRenderer("snippets/userList.nunjucks", function () {
     return {
         userList: userList.getList()
-    }
+    };
 });
 
 export const ChatMessageRenderer = new SnippetRenderer("snippets/chatMessage.nunjucks", function () {
     return {
         timestamp: moment().format(config.get("server.timestampFormat"))
-    }
+    };
 });

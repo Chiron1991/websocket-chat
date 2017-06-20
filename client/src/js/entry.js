@@ -14,7 +14,7 @@ function appendToHistory(message) {
 
 // init emoji converter
 const emoji = new EmojiConvertor();
-emoji.img_sets.apple.path = '/static/emoji-apple/';
+emoji.img_sets.apple.path = "/static/emoji-apple/";
 emoji.include_title = true;
 
 // connect to server
@@ -37,7 +37,7 @@ socket.on("newChatMessage", function (message) {
 
 // append system messagen to history
 socket.on("newSystemMessage", function (message) {
-    appendToHistory(message)
+    appendToHistory(message);
 });
 
 // put updated user list to place
